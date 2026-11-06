@@ -604,7 +604,7 @@ func TestDriverGrantBucketAccessPolicy(t *testing.T) {
 			wantActions: []string{
 				"GetBucketObjectLockConfiguration:b", "GetObjectLegalHold:b", "GetObjectRetention:b", "List:b",
 				"PutBucketObjectLockConfiguration:b", "PutObjectLegalHold:b", "PutObjectRetention:b", "Read:b",
-				"Tagging:b", "Write:b",
+				"Tagging:b", "Write:b", "WriteAcp:b",
 			},
 		},
 		{
@@ -613,7 +613,7 @@ func TestDriverGrantBucketAccessPolicy(t *testing.T) {
 			wantActions: []string{
 				"GetBucketObjectLockConfiguration:b", "GetObjectLegalHold:b", "GetObjectRetention:b", "List:b",
 				"PutBucketObjectLockConfiguration:b", "PutObjectLegalHold:b", "PutObjectRetention:b", "Read:b",
-				"Tagging:b", "Write:b",
+				"Tagging:b", "Write:b", "WriteAcp:b",
 			},
 		},
 		{
@@ -623,7 +623,7 @@ func TestDriverGrantBucketAccessPolicy(t *testing.T) {
 				"BypassGovernanceRetention:b",
 				"GetBucketObjectLockConfiguration:b", "GetObjectLegalHold:b", "GetObjectRetention:b", "List:b",
 				"PutBucketObjectLockConfiguration:b", "PutObjectLegalHold:b", "PutObjectRetention:b", "Read:b",
-				"Tagging:b", "Write:b",
+				"Tagging:b", "Write:b", "WriteAcp:b",
 			},
 		},
 		{

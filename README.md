@@ -84,8 +84,9 @@ file named: `BucketInfo` containing a json:
 The `accessPolicy` parameter of a BucketAccessClass sets the
 actions granted to every key issued through it:
 
-- `readwrite` (default): read, write, list and tag objects; read and
-  set Object Lock retention, legal holds and the bucket's Object Lock
+- `readwrite` (default): read, write, list and tag objects; set a
+  canned ACL on write (`x-amz-acl`, which the Docker registry sends on
+  every upload); read and set Object Lock retention, legal holds and the bucket's Object Lock
   configuration.
 - `readonly`: read and list objects; read Object Lock retention, legal
   holds and configuration.

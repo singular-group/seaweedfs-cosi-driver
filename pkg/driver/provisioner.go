@@ -733,6 +733,10 @@ func validateObjectLockParams(params map[string]string) error {
 	return nil
 }
 
+// SeaweedFS checks a write that sets a canned ACL (x-amz-acl, which clients
+// such as the Docker registry send on every PutObject) against WriteAcp, not
+// Write, so readwrite grants it.
+//
 // SeaweedFS checks Object Lock operations against dedicated actions rather
 // than Read and Write, so each policy names them explicitly. Governance
 // bypass is left out of readwrite, since Write never covered it, and has a
@@ -759,7 +763,7 @@ var (
 // x-amz-bypass-governance-retention. SeaweedFS matches this bucket-scoped
 // grant from 4.48 on; earlier servers ignore it.
 func actionsForPolicy(policy string) ([]string, error) {
-	readwrite := slices.Concat([]string{"Read", "Write", "List", "Tagging"}, objectLockReadActions, objectLockWriteActions)
+	readwrite := slices.Concat([]string{"Read", "Write", s3_constants.ACTION_WRITE_ACP, "List", "Tagging"}, objectLockReadActions, objectLockWriteActions)
 	switch policy {
 	case "readonly":
 		return slices.Concat([]string{"Read", "List"}, objectLockReadActions), nil
